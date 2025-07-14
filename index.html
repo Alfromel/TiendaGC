@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GC | Ropa con estilo y comodidad</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1 class="logo">GC</h1>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="menu">
+        <a href="#">Inicio</a>
+        <a href="#">Hombre</a>
+        <a href="#">Mujer</a>
+        <a href="#">Niños</a>
+        <a href="#">Accesorios</a>
+        <a href="#">Ofertas</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Carrusel de portada -->
+<section class="hero">
+  <div class="carousel">
+    <img src="https://fos.com.mx/cdn/shop/articles/negocio_de_ropa.webp?v=1690921572" alt="Slide 1">
+    <img src="https://imagenes.elpais.com/resizer/v2/BY5SYUDKHZBJ7KUQTRFEARXZIY.png?auth=e4dbb2d3d796b9da7ea75b789d7aaa0a38c80c74f7d5eeecea78ce48e610c3bc&width=1960&height=1103&smart=true" alt="Slide 2">
+    <img src="https://cdn-3.expansion.mx/dims4/default/65bbd76/2147483647/resize/1280x/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F1f%2Fd3%2F92c28a4a43f0bd400140ea3248f2%2Fla-venta-ropa-de-segunda-mano-vive-un-auge-tras-la-pandemia..jpeg" alt="Slide 3">
+  </div>
+  <div class="hero-text">
+    <h2>Ropa con Estilo y Comodidad</h2>
+    <p>Explora nuestra colección y renueva tu estilo hoy mismo.</p>
+  </div>
+</section>
+
+
+
+  <main class="container">
+    <div class="title">Nueva Coleccion GC</div>
+    <div class="products">
+      
+    
+
+        <div class="product">
+  <img src="https://cdnx.jumpseller.com/insumos-mas-que-papel/image/45656982/Screenshot_2024-02-19_at_11-24-38_negro.jpg__JPEG_Imagen_600___600_pixeles_.png?1708352986" alt="Campera Negra">
+  <div class="info">
+    <h3>Campera GC Negra</h3>
+    <div class="price">BS 150,00 </div>
+    <a href="#" class="btn-comprar" onclick="irAPago(this)">Comprar</a>
+  </div>
+</div>
+
+   <div class="product">
+  <img src="https://www.productosgraficos.cl/wp-content/uploads/2024/02/polera-algodon-artificial.png" alt="Campera Negra">
+  <div class="info">
+    <h3>Campera GC Blanca</h3>
+    <div class="price">BS 160,00 </div>
+    <a href="#" class="btn-comprar" onclick="irAPago(this)">Comprar</a>
+  </div>
+</div>
+
+   <div class="product">
+  <img src="https://uniforma.cl/wp-content/uploads/2022/07/9D899B02-3F3B-4A56-A6CA-C634D25B1B67-748x1012.jpeg" alt="Campera Negra">
+  <div class="info">
+    <h3>Buso GC Negro</h3>
+    <div class="price">BS 210,00 </div>
+    <a href="#" class="btn-comprar" onclick="irAPago(this)">Comprar</a>
+  </div>
+</div>
+
+   <div class="product">
+  <img src="https://sursports.cl/cdn/shop/files/Pantalon-Buzo-Hydrogen-Tecnico-Blanco.jpg?v=1750277019" alt="Campera Negra">
+  <div class="info">
+    <h3>Buso GC Blanco</h3>
+    <div class="price">BS 190,00 </div>
+    <a href="#" class="btn-comprar" onclick="irAPago(this)">Comprar</a>
+  </div>
+</div>
+
+      </div>
+      <!-- Puedes agregar más productos aquí -->
+    </div>
+    <!-- Modal para imagen ampliada -->
+<div id="modal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img-ampliada">
+</div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 GC. Todos los derechos reservados.
+  </footer>
+
+  <!-- Scripts JS dentro del HTML -->
+  <script>
+    // Animación de productos
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".product");
+      items.forEach((item, i) => {
+        item.style.opacity = 0;
+        item.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          item.style.transition = "all 0.6s ease";
+          item.style.opacity = 1;
+          item.style.transform = "translateY(0)";
+        }, i * 100);
+      });
+    });
+
+    // Menú hamburguesa
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('show');
+    }
+
+     // Obtener elementos
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("img-ampliada");
+  const close = document.querySelector(".close");
+
+  // Añadir evento a cada imagen
+  document.querySelectorAll(".product img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    });
+  });
+
+  // Cerrar modal
+  close.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // También cerrar al hacer clic fuera de la imagen
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+   function irAPago(btn) {
+  const producto = btn.closest(".product");
+  const imgSrc = producto.querySelector("img").src;
+  const descripcion = producto.querySelector("h3").textContent;
+  const precioTexto = producto.querySelector(".price").innerText || producto.querySelector(".price").textContent;
+
+  localStorage.setItem("imgProducto", imgSrc);
+  localStorage.setItem("descProducto", descripcion);
+  localStorage.setItem("precioProducto", precioTexto);
+
+  window.location.href = "pago.html";
+}
+
+  </script>
+</body>
+</html>
