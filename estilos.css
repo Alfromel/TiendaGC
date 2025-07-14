@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #020408;
+  --primary-color: #000000;
   --accent-color: #a8004f;
   --bg-light: #f3f4f6;
   --text-color: #111827;
@@ -70,7 +70,7 @@ nav a:hover {
   nav {
     display: none;
     flex-direction: column;
-    background-color: #1f2937;
+    background-color: #000000;
     width: 100%;
     margin-top: 1rem;
     padding: 1rem 0;
